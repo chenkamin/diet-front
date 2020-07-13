@@ -16,6 +16,7 @@ function Home() {
     let data = await axios.post("http://localhost:4000/users/signup", state);
     console.log(data);
     console.log(state);
+    window.location.replace(`http://localhost:3000/Login`)
     return data;
   };
 

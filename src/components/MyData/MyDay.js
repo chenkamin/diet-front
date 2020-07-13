@@ -9,39 +9,20 @@ function Home() {
 
   const handleRedirect = (role) => {
     return role == "client"
-      ? "http://localhost:3000/MyDay"
-      : "http://localhost:3000/MyUsers";
+      ? "http://localhost:3000/<mypage>"
+      : "http://localhost:3000/<guide>";
   };
 
   const postData = async () => {
     let data = await axios.post("http://localhost:4000/users/login", state);
     const nextPage = handleRedirect(data.data.data.user[0].role);
-    console.log(data.data.token);
-    localStorage.setItem("token", data.data.token);
     console.log(nextPage);
-    window.location.replace(nextPage);
     return data;
   };
 
-
-
   return (
     <div id="home-container">
-      <input
-        type="email"
-        placeHolder="email"
-        name="email"
-        value={state.email}
-        onChange={handleInputs}
-      />
-      <input
-        type="password"
-        placeHolder="password"
-        name="password"
-        value={state.password}
-        onChange={handleInputs}
-      />
-      <div onClick={postData}>LOGIN</div>
+my data
     </div>
   );
 }
