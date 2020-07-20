@@ -6,15 +6,16 @@ import Users from "./Users";
 
 function Group(p) {
   //   const { name, id } = p.data;
-
+  console.log(p.id);
   return (
     <div id="home-container">
       {/* <Route path={`/groups/${p.id}`} component={Users} id={p.id} cd /> */}
-      <Link to={{
-    pathname: `/groups/${p.id}`,
-    search: `${p.id}`,
-    state: { fromDashboard: true }
-  }}>
+      <Link
+        to={{
+          pathname: `/groups/${p.id}`,
+          // search: `${p.id}`,
+        }}
+      >
         <div id={p.id}>{p.name}</div>
       </Link>
       ;
@@ -24,23 +25,3 @@ function Group(p) {
 
 // {`/groups/${p.id}`} id={p.id}
 export default Group;
-
-// // <Router>
-// // <Route
-// //   path="/groups"
-// //   exact
-// //   render={({ match }) => <Groups match={match} data={groups} />}
-// // />
-// // </Router>
-// {/* <Route
-//   path="/movies/:id"
-//   exact
-//   render={({ match }) => <MovieDetail match={match} data={this.state} />} */}
-// // />;
-// {/* <Route exact path="/" render={() => ( */}
-//  loggedIn ? (
-//  <Redirect to="/dashboard"/>
-//  ) : (
-//  <PublicHomePage/>
-//  )
-//  )}/>

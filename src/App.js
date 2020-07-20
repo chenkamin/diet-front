@@ -4,6 +4,8 @@ import SignUp from "./components/login/SignUp";
 import MyUsers from "./components/MyUsers/MyUsers";
 import MyDay from "./components/MyData/MyDay";
 import Users from "./components/MyUsers/Users";
+import User from "./components/MyUsers/Users";
+import Details from "./components/MyUsers/Details";
 
 import Login from "./components/login/Login";
 import "./App.css";
@@ -26,6 +28,8 @@ function App() {
       <Route path="/MyUsers" exact render={() => <MyUsers />} />
       <Route path="/MyDay" exact render={() => <MyDay />} />
       <Route path="/groups/:id" exact render={() => <Users />} />
+      <Route path="/users/:id" exact render={() => <User />} />
+      <Route path="/daily/:id" exact render={() => <Details />} />
     </Router>
   );
 }

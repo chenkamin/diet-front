@@ -9,8 +9,12 @@ function MyUsers() {
     headers: { Authorization: `Bearer ${localStorage.token}` },
   };
   useEffect(() => {
+    const userId = localStorage.getItem("id");
     const getGroups = async () => {
-      let res = await axios.get("http://localhost:4000/groups", config);
+      let res = await axios.get(
+        `http://localhost:4000/groups/?guideId=${userId}`,
+        config
+      );
       setState(res.data.data.groups);
     };
     getGroups();

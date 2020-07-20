@@ -8,7 +8,7 @@ function Groups(p) {
   console.log(p.groups);
   const groups = p.groups;
 
-//   const [groups, setUsers] = React.useState([]);
+  //   const [groups, setUsers] = React.useState([]);
   const config = {
     headers: { Authorization: `Bearer ${localStorage.token}` },
   };
@@ -27,7 +27,7 @@ function Groups(p) {
   return (
     <div>
       {groups.map((m) => (
-        <Group name={m.name} id={m.id} />
+        <Group key={m.id} name={m.name} id={m.id} />
       ))}
     </div>
   );

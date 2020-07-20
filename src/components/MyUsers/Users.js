@@ -5,7 +5,7 @@ import {
   Link,
   useParams,
 } from "react-router-dom";
-
+import User from './User'
 import React, { useEffect, useContext } from "react";
 
 function Users(p) {
@@ -25,8 +25,8 @@ function Users(p) {
         `http://localhost:4000/users?groupId=${groupId.id}`,
         config
       );
-      console.log(res);
-      setUsers(res.data.data.groups);
+      console.log(res.data.data);
+      setUsers(res.data.data.users);
     };
     getGroups();
   }, []);
@@ -40,7 +40,7 @@ function Users(p) {
   //   setUsers(res.data.data.users);
   // };
 
-  return <div id="home-container">sss</div>;
+return <div id="home-container">{users.map(u => <User name={u.name} key={u.id} id={u.id}/>)}</div>;
 }
 
 export default Users;
