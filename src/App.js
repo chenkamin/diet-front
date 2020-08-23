@@ -6,6 +6,8 @@ import MyDay from "./components/MyData/MyDay";
 import Users from "./components/MyUsers/Users";
 import User from "./components/MyUsers/Users";
 import Details from "./components/MyUsers/Details";
+import Menu from "./components/MyUsers/Menu";
+import FoodList from "./components/MyUsers/FoodList";
 
 import Login from "./components/login/Login";
 import "./App.css";
@@ -23,10 +25,13 @@ function App() {
       {/* </div> */}
       {/* <Route path="/" exact render={() => <Table   />} /> */}
       {/* <Route path="/Crud" exact render={() => <Crud   />} /> */}
-      <Route path="/Login" exact render={() => <Login />} />
+      <Route path="/" exact render={() => <Login />} />
       <Route path="/SignUp" exact render={() => <SignUp />} />
+      <Route path="/Menu" exact render={() => <Menu />} />
       <Route path="/MyUsers" exact render={() => <MyUsers />} />
       <Route path="/MyDay" exact render={() => <MyDay />} />
+      <Route path="/FoodList" exact render={() => <FoodList />} />
+
       <Route path="/groups/:id" exact render={() => <Users />} />
       <Route path="/users/:id" exact render={() => <User />} />
       <Route path="/daily/:id" exact render={() => <Details />} />

@@ -9,9 +9,10 @@ function Home() {
 
   const handleRedirect = (user) => {
     return user.role == "client"
-      ? `http://localhost:3000/daily/${user.id}`
+      ? `http://localhost:3000/menu`
       : "http://localhost:3000/MyUsers";
   };
+  //      ? `http://localhost:3000/daily/${user.id}`
 
   const postData = async () => {
     let data = await axios.post("http://localhost:4000/users/login", state);

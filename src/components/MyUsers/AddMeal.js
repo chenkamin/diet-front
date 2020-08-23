@@ -12,6 +12,7 @@ import React, { useEffect, useContext } from "react";
 import * as am4core from "@amcharts/amcharts4/core";
 import * as am4charts from "@amcharts/amcharts4/charts";
 import am4themes_animated from "@amcharts/amcharts4/themes/animated";
+import "./comp.css";
 
 am4core.useTheme(am4themes_animated);
 function AddMeal(b) {
@@ -46,42 +47,46 @@ function AddMeal(b) {
   let chart = am4core.create("chartdiv", am4charts.SlicedChart);
   chart.paddingBottom = 10;
   chart.data = [
-  {
-    "name": "סוכרים",
-    "value": 1
-  }, {
-    "name": "פירות",
-    "value": 1
-  }, {
-    "name": "ירקות",
-    "value": 1
-  }, {
-    "name": "שומנים",
-    "value": 1
-  }, {
-    "name": "חלבונים",
-    "value": 1
-  }, {
-    "name": "דגנים",
-    "value": 1
-  }];
-  
+    {
+      "name": "סוכרים",
+      "value": 1
+    }, {
+      "name": "פירות",
+      "value": 1
+    }, {
+      "name": "ירקות",
+      "value": 1
+    }, {
+      "name": "שומנים",
+      "value": 1
+    }, {
+      "name": "חלבונים",
+      "value": 1
+    }, {
+      "name": "דגנים",
+      "value": 1
+    }];
+
   var series = chart.series.push(new am4charts.PyramidSeries());
   series.dataFields.value = "value";
   series.dataFields.category = "name";
   series.alignLabels = false;
   series.valueIs = "width";
   series.calculatePercent = true;
+
+
+
+
+
   return (
-    <div id="home-container">
-      <select name="id" onChange={handleInputs}>
+    <div id="graph-funnel">
+      {/* <select name="id" onChange={handleInputs}>
         {foods.map((f) => (
           <option value={f.id} name="id">
             {f.name}{" "}
           </option>
         ))}
-      </select>
-      <div onClick={addMeal}>SEND</div>
+      </select> */}
       <div id="chartdiv"></div>
 
     </div>
