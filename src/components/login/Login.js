@@ -1,39 +1,41 @@
 import React from "react";
 import axios from "axios";
-
+import http from './../../lib/httpService'
 function Home() {
   const [state, setState] = React.useState({ email: "", password: "" });
 
   const handleInputs = (e) =>
     setState({ ...state, [e.target.name]: e.target.value });
 
-  const handleRedirect = (user) => {
-    return user.role == "client"
+  const handleRedirect = async (user) => {
+    const aa = await user.role
+    return aa == "client"
       ? `http://localhost:3000/menu`
       : "http://localhost:3000/MyUsers";
   };
-  //      ? `http://localhost:3000/daily/${user.id}`
 
   const postData = async () => {
-    let data = await axios.post("http://localhost:4000/users/login", state);
-    const nextPage = handleRedirect(data.data.data.user[0]);
-    console.log(data.data);
+    let data = await http.post(`/users/login`, state)
+    // let data = await axios.post("http://localhost:4000/users/login", state);
+    console.log(data.data.user[0])
+    // console.table(data)
+    const nextPage = await handleRedirect(data.data.user[0]);
     localStorage.setItem("token", data.data.token);
-    localStorage.setItem("id", data.data.data.user[0].id);
+    localStorage.setItem("id", data.data.user[0].id);
 
-    console.log(nextPage);
     window.location.replace(nextPage);
     return data;
   };
 
   return (
-    <div id="home-container">
+    <div className="btns-container">
       <input
         type="email"
         placeHolder="email"
         name="email"
         value={state.email}
         onChange={handleInputs}
+        className="btns-inputs"
       />
       <input
         type="password"
@@ -41,8 +43,10 @@ function Home() {
         name="password"
         value={state.password}
         onChange={handleInputs}
+        className="btns-inputs"
       />
-      <div onClick={postData}>LOGIN</div>
+      <div onClick={postData} className="btns-inputs login-btn"
+      >התחבר</div>
     </div>
   );
 }

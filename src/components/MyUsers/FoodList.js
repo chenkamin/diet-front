@@ -10,25 +10,17 @@ function FoodList() {
 
     useEffect(() => {
         const getGroups = async () => {
-            // let res = await apiService.get('foods')
-            // var Axios = axios.create({
-            //   withCredentials: true,
-            // });
             const config = {
                 headers: { Authorization: `Bearer ${localStorage.token}` },
             };
             const url = `http://localhost:4000/foods`;
             let res = await axios({ url, config });
             setFoods(res.data);
-            console.log("EFFECT");
         };
         getGroups();
     }, []);
 
     const postDataTest = async () => {
-        // console.log(addedFood);
-        console.log("cs");
-        // const dataPost = meals;
         let data = await axios.post("http://localhost:4000/meals", meals);
         // console.log(data.data.points[0].totalPoints);
         // setMeals(data.data.meals);

@@ -21,7 +21,6 @@ function AddMeal(b) {
   const config = {
     headers: { Authorization: `Bearer ${localStorage.token}` },
   };
-  console.log(b);
   useEffect(() => {
     const getGroups = async () => {
       // let res = await apiService.get('foods')
@@ -31,7 +30,6 @@ function AddMeal(b) {
       const url = `http://localhost:4000/foods`;
       let res = await Axios({ url, config });
       setFoods(res.data);
-      console.log("EFFECT");
     };
     getGroups();
   }, []);
@@ -40,7 +38,6 @@ function AddMeal(b) {
   };
 
   const handleInputs = (e) => {
-    console.log(e.target);
 
     setAddedFood({ ...addedFood, [e.target.name]: e.target.value });
   };

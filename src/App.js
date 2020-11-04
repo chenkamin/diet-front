@@ -8,6 +8,7 @@ import User from "./components/MyUsers/Users";
 import Details from "./components/MyUsers/Details";
 import Menu from "./components/MyUsers/Menu";
 import FoodList from "./components/MyUsers/FoodList";
+import Weight from "./components/MyUsers/Weight";
 
 import Login from "./components/login/Login";
 import "./App.css";
@@ -35,6 +36,8 @@ function App() {
       <Route path="/groups/:id" exact render={() => <Users />} />
       <Route path="/users/:id" exact render={() => <User />} />
       <Route path="/daily/:id" exact render={() => <Details />} />
+      <Route path="/weight/:id" exact render={() => <Weight />} />
+
     </Router>
   );
 }

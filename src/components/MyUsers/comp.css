@@ -14,10 +14,6 @@ input[type="button"] {
   cursor: pointer;
 }
 
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-}
 
 .input-group {
   clear: both;
@@ -74,6 +70,7 @@ input[type="number"] {
 
 #chartdiv{
   display: grid;
+  direction: ltr;
 }
 
 
@@ -84,3 +81,94 @@ input[type="number"] {
   grid-template-columns: 33% 33% 33%;
 padding-bottom: 5%;
 }
+
+
+#dates-container{
+  display: grid;
+  grid-template-columns: 33% 33% 33%;
+}
+.current-date{
+  display: grid;
+  align-items: center;
+  justify-items: center;
+}
+
+.dates-btns{
+  display: grid;
+  align-items: center;
+  justify-items: center;
+}
+
+
+/* WATER */
+
+
+.cup {
+  /* position: absolute; */
+  /* top: 50%; */
+  /* left: 50%; */
+  /* transform: translate(-50%, -50%); */
+  width: 50px;
+  height: 60px;
+  border: 6px solid #262626;
+  border-top: 2px solid transparent;
+  border-radius: 15px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  background: url(https://image.ibb.co/fmHm66/wave.png);
+  background-position: 0px 350px;
+  background-repeat: repeat-x;
+  background-position: 100px 0px;
+  box-shadow: 0 0 0 6px white, 0 6px 10px rgba(0,0,0,1);
+}
+
+.cup:before {
+  content: '';
+  position: absolute;
+  width: 12;
+  height: 20px;
+  border: 6px solid #262626;
+  right: 600px;
+  top: 190px;
+  border-top-right-radius: 35px;
+  border-bottom-right-radius: 35px;
+}
+
+
+
+.water-container{
+  display: grid;
+  grid-template-columns: 33% 33% 33%;
+}
+
+
+.water-items{
+  display: grid;
+  align-items: center;
+  justify-items: center;
+  margin:3%
+}
+
+
+.water-section{
+  width:40%
+}
+
+
+.day-section{
+  width:40%
+}
+
+.day-header{
+  display: grid;
+}
+
+.day-text{
+  display: grid;
+  align-items: center;
+  justify-items: center;
+}
+
+/* .weight-graph{
+  background-color: red;
+} */

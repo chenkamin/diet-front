@@ -6,60 +6,70 @@ import {
   useParams,
 } from "react-router-dom";
 import AddMeal from "./AddMeal";
-
+import Date from "./Date"
+import Water from "./Water"
+import Steps from "./Steps"
 import moment from "moment";
 import React, { useEffect, useContext } from "react";
 
 function Daily(p) {
-  console.log(p);
   let userId = useParams();
-  console.log(userId);
 
   const [meals, setMeals] = React.useState([]);
   const [points, setPoints] = React.useState(0);
+  const [date, setDate] = React.useState(moment().format("DD-MM-YYYY"));
+  const [steps, setSteps] = React.useState(0);
+
   const config = {
     headers: { Authorization: `Bearer ${localStorage.token}` },
   };
 
   useEffect(() => {
     const getGroups = async () => {
-      const today = moment().format("YYYY-MM-DD");
-      const url = `http://localhost:4000/meals/${userId.id}/${today}`;
+      const url = `http://localhost:4000/meals/${userId.id}/${date}`;
       let res = await axios.get(url, config);
       setMeals(res.data.meals);
       setPoints(res.data.points[0].totalPoints);
     };
     getGroups();
-  }, []);
+  }, [date]);
 
-  // const postData = async (addedFood) => {
-  //   console.log(addedFood);
-  //   const userId = localStorage.getItem("id");
-  //   const dataPost = { userId, foodId: addedFood };
-  //   let data = await axios.post("http://localhost:4000/meals", dataPost);
-  //   console.log(data.data.points[0].totalPoints);
-  //   setMeals(data.data.meals);
-  //   setPoints(parseInt(data.data.points[0].totalPoints));
-  //   return data;
-  // };
+
+  const handleDate = (action, days) => {
+
+
+    let newDate;
+    if (action == 'add') {
+      newDate = moment().add(days, "days").format("DD-MM-YYYY")
+    } else {
+      newDate = moment().subtract(days, "days").format("DD-MM-YYYY")
+    }
+    setDate(newDate);
+  }
+  console.log(meals)
+
 
   return (
     <div id="home-container">
-        <AddMeal />
+      <Date handleDate={handleDate} date={date} />
+      <div className="points">{points}</div>
+      <AddMeal />
       <div id="daily-btns">
-        {/* postData={postData} */}
         <Link
           to={{ pathname: `/FoodList` }}>          <div >אוכל</div>
         </Link>
-        <div >מים</div>
-        <div >צעדים</div>
+        <Water date={date} />
+        <Steps date={date} />
       </div>
-
-
-      {/* <div>TOTAL POINTS : {points}</div> */}
-
       {meals.map((u) => (
-        <div> {u.name} </div>
+        <div className="list-container">
+          <div className="list-item">
+            {u.amount} מנות {u.name}
+          </div>
+          <div className="list-item">
+            {u.groupName}
+          </div>
+        </div>
       ))}
     </div>
   );

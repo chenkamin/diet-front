@@ -4,15 +4,22 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 function Home() {
     return (
-        <div id="home-container">
+        <div className="btns-container">
             <Link
                 to={{
                     pathname: `/daily/${localStorage.id}`,
                 }}
             >
-                <div id={localStorage.id}>היום</div>
+                <div  className="btns-inputs" id={localStorage.id}>היום</div>
             </Link>
-            <div>מתכונים</div>
+            <div  className="btns-inputs">מתכונים</div>
+            <Link
+                to={{
+                    pathname: `/weight/${localStorage.id}`,
+                }}
+            >
+                <div  className="btns-inputs" id={localStorage.id}>המשקל שלי</div>
+            </Link>
         </div>
     );
 }
